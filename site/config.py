@@ -1,0 +1,4 @@
+MFEST_ACCES_TOKEN = "ww8i95btnyc1k862cosb9al51hfd39vn"
+MFEST_CLIENT_SECRET = "ofygakpksyx23woil7fwh0avk7bbsz5n"
+MFEST_RESOURCE_OWNER_KEY = "pgvfu2r3zob3y2uqwt2q74o36nzy9ot4"
+MFEST_RESOURCE_OWNER_SECRET = "e0hf0c9jf6ib9ar8vu1g5pasjcokbpgo"

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proccess Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <style>
+        .container {
+            width: 80%;
+        }
+
+        .progress-container {
+            width: 100%;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 20px;
+            width: 0%;
+            background-color: #2a73cc;
+            text-align: center;
+            line-height: 20px;
+            color: white;
+            font-size: 12px;
+        }
+
+        .log-container {
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .log-container textarea {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            background-color: #f9fafc;
+            color: #333;
+            resize: none;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body class="flex justify">
+    <div class="container">
+        <h1>Обробка замовлень {{date}}, файла: {{orders_file}}</h1>
+
+        <div class="progress-container">
+            <label>Прогрес обробки:</label>
+            <div class="progress-bar">
+                <div class="progress-bar-fill">0%</div>
+            </div>
+        </div>
+
+        <div class="log-container">
+            <label>Логи:</label>
+            <textarea oninput="this.scrollTop = this.scrollHeight;" readonly>
+            </textarea>
+        </div>
+    </div>
+
+    <script>
+        fetch("proccess", {
+            headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+            },
+            method: "POST"
+        })
+        .then(function(res){ window.location.href='result' })
+        .catch(function(res){ console.log(res) })
+
+        window.setInterval(() => {
+            fetch("get_log", {
+                headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+                },
+                method: "GET"
+            })
+           .then((response) => {
+                console.log(response.statusText);
+                return response.json();
+            })
+            .then(data=>{
+                console.log(data)
+                document.querySelector("textarea").innerHTML = data.log;
+                document.querySelector(".progress-bar-fill").style.width = data.percentage+"%";
+                document.querySelector(".progress-bar-fill").innerText = data.percentage+"%";
+            })
+        }, 10000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <style>
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .form-group input[type="date"],
+        .form-group input[type="file"] {
+            width: 340px;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #bcdff1;
+            border-radius: 5px;
+        }
+
+        form{
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container flex center column">
+        <div class="flex align">
+            <button onclick="window.location.href='/'" class="icon-button">
+                <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+            </button>
+            <h1 style="height: 40px">Забрати закази</h1>
+        </div>
+         <form method="POST" enctype="multipart/form-data" class="flex center column">
+            <div class="form-group">
+                <label for="date">Виберіть дату:</label>
+                <input type="date" name="date" class="date flex center" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="orders_file">Завантажте файл з замовленями (TXT):</label>
+                <input type="file" name="orders_file" accept=".txt" required>
+            </div>
+            
+            <button type="submit">Забрати</button>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const today = new Date().toISOString().split('T')[0];
+          document.querySelector('.date').value = today;
+        });
+      </script>
+</body>
+</html>

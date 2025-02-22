@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+    <style>
+        /* Additional custom styles for main page */
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .button-container button {
+            width: 200px;
+        }
+
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" class="flex justify">
+        <div class="header">Підготовка заказів до друку</div>
+        <div class="button-container">
+            <button onclick="window.location.href='/catch_orders'">Забрати закази</button>
+            <button onclick="window.location.href='/generate_canvas'">Згенерувати полотно для друку</button>
+        </div>
+    </div>
+</body>
+</html>
