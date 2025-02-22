@@ -8,7 +8,7 @@ def create_app() -> Flask:
     This function create app and register all blueprints
     And return fully configured app
     """
-
+    
     # Create Flask app instance
 
     app = Flask(__name__, template_folder=f"{sys._MEIPASS}/app/templates" if getattr(sys, 'frozen', False) else "templates")
