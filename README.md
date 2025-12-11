@@ -9,9 +9,10 @@ Consists of three parts:
 
 # Use
 
-### Site - just for looking for alghoritm ( you will not be able to run it :( )
+```
+•	Site - just for looking for alghoritm ( you will not be able to run it :( )
 
-### Photoshop just open plugin app
+•	Photoshop just open plugin app
 
-### Run main.py code in clo3d python tab
-
+•	Run main.py code in clo3d python tab
+```
