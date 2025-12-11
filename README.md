@@ -8,10 +8,10 @@ Consists of three parts:
 •	Clo3D plugin - to make 3d products
 
 # Use
-```
+
 ### Site - just for looking for alghoritm ( you will not be able to run it :( )
 
 ### Photoshop just open plugin app
 
 ### Run main.py code in clo3d python tab
-```
+
