@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Плагін «Полотна»</title>
+    <style>
+        body { font-family: sans-serif; padding:16px; color:#ccc; }
+        button { padding:8px 12px; margin:4px; font-size:14px; }
+        #generatePanel, #processScreen {
+            margin-top:16px; padding:12px; border:1px solid #ccc;
+            border-radius:4px; display:none;
+        }
+        .row { display:flex; align-items:center; margin:8px 0; }
+        .row input[type="number"],
+        .row input[type="date"] { width:120px; margin-right:16px; }
+        .toggle-group { display:flex; gap:16px; margin:8px 0; }
+    </style>
+</head>
+
+<body>
+    <!-- Головний екран -->
+    <div id="mainScreen">
+        <button id="btnResize">Змінити розмір</button>
+        <button id="btnGenerate">Створити полотна</button>
+    </div>
+
+    <!-- Панель генерації -->
+    <div id="generatePanel">
+        <div class="row">
+            <label for="creationDate">Дата створення:</label>
+            <input type="date" id="creationDate"/>
+        </div>
+    
+        <!-- Перемикач 2D / 3D -->
+        <div class="row toggle-group">
+            <label>Режим:</label>
+            <label><input type="radio" name="mode" value="2D" checked/> 2D</label>
+            <label><input type="radio" name="mode" value="3D"/> 3D</label>
+        </div>
+    
+        <!-- Розміри полотен --> 
+        <div class="row">
+            <label>DTF:</label>
+            <input type="number" id="w_DTF" step="1" value="55"/>см × 
+            <input type="number" id="h_DTF" step="1" value="300"/>см
+        </div>
+        <div class="row">
+            <label>DTF Small:</label>
+            <input type="number" id="w_DTFSmall" step="1" value="55"/>см × 
+            <input type="number" id="h_DTFSmall" step="1" value="300"/>см
+        </div>
+        <div class="row">
+            <label>SuvenirSubli:</label>
+            <input type="number" id="w_SuvenirSubli" step="1" value="90"/>см × 
+            <input type="number" id="h_SuvenirSubli" step="1" value="300"/>см
+        </div>
+        <div class="row">
+            <label>SuvenirSubliChashka:</label>
+            <input type="number" id="w_SuvenirSubliChashka" step="1" value="21"/>см × 
+            <input type="number" id="h_SuvenirSubliChashka" step="1" value="29.7"/>см
+        </div>
+        <div class="row">
+            <label>3D:</label>
+            <input type="number" id="w_3D" step="1" value="145"/>см × 
+            <input type="number" id="h_3D" step="1" value="500"/>см
+        </div>
+        <div class="row">
+            <button id="btnRunGenerate">Почати</button>
+            <button id="btnCancelGenerate">Скасувати</button>
+        </div>
+    </div>
+
+    <!-- Екран процесу -->
+    <div id="processScreen">
+        <p>⏳ Будь ласка, зачекайте…</p>
+        <progress></progress>
+    </div>
+
+    <script src="./panel.js"></script>
+</body>
+</html>
